@@ -1,0 +1,72 @@
+from bs4 import BeautifulSoup
+import requests
+import pandas as pan
+from os import path
+from matplotlib.pyplot import imread
+import matplotlib.pyplot as plt
+from PIL import Image
+import sys, os, webbrowser, platform
+
+import time
+from time import sleep
+from sys import stdout
+
+import numpy as np
+from wordcloud import WordCloud, ImageColorGenerator
+from PIL import Image
+import requests
+from io import BytesIO
+ 
+from sys import stdout
+
+
+RED, WHITE, CYAN, GREEN, END = '\033[91m', '\33[46m', '\033[36m', '\033[1;32m', '\033[0m'
+
+
+for i in range(101):
+        time.sleep(0.01)
+        stdout.write("\r{0}[{3}*{0}]{2} Iniciando Programa Por Favor Espere... %d%%".format(GREEN, END, CYAN, RED, WHITE) % i)
+        stdout.flush()
+        time.sleep(0.02)
+
+id = input("\n\n[*] Digite el ID del usuario para mostrar la nube de palabras: \n    ")
+print("\n")
+for i in range(101):
+        time.sleep(0.01)
+        stdout.write("\r{0}[{3}*{0}]{2} Abriendo Base De Datos De StackOverFlow... %d%%".format(GREEN, END, CYAN, RED, WHITE) % i)
+        stdout.flush()
+        time.sleep(0.02)
+
+for i in range(101):
+        time.sleep(0.01)
+        stdout.write("\r{0}[{3}*{0}]{2} Cargando Usuarios De StackOverFlow... %d%%".format(GREEN, END, CYAN, RED, WHITE) % i)
+        stdout.flush()
+        time.sleep(0.02)
+
+print (f"\n\n[*] Buscando Usuario << {id} >> En StackOverFlow Data Base Por Favor Espere")
+for i in range(101):
+        time.sleep(0.01)
+        stdout.write("\r{0}[{3}*{0}]{2} %d%%".format(GREEN, END, CYAN, RED, WHITE) % i)
+        stdout.flush()
+        time.sleep(0.02)
+
+if id.isdigit () != True:
+  print ("\n\nDato no valido.")
+else:
+  url = 'https://es.stackoverflow.com/users/' + id + "/?tab=tags"
+  page = requests.get (url)   # requests chequea que el url funciona
+  
+ dic = dict (zip (tuple (labels), tuple (numbers)))
+      response = requests.get (url)
+      creation = np.asarray (Image.open (BytesIO (response.content)))  #np transforma la imagen en un array
+      wordcloud = WordCloud (background_color = clr, mask=creation, contour_width = cw, max_words=1000).generate_from_frequencies (dic)
+      colors = ImageColorGenerator (creation)
+      wordcloud.recolor (color_func = colors)
+      plt.figure (figsize = (15, 8))
+      plt.imshow (wordcloud)
+      plt.axis ("off")
+      plt.show ()
+      plt.close () 
+
+
+ 
