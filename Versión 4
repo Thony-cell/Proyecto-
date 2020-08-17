@@ -1,0 +1,61 @@
+import re
+
+import matplotlib.pyplot as plt
+import numpy as np
+from PIL import Image
+from wordcloud import WordCloud, ImageColorGenerator, STOPWORDS
+
+'''url= 'https://es.stackoverflow.com/users/54039/triby?tab=tags'
+
+page= requests.get(url)
+
+soup= BeautifulSoup(page.content, 'html.parser')
+
+#lbls=etiquetas de usuario
+lbls = soup.find_all('a', class_='post-tag')
+
+tbl= list()
+labels = list()
+
+
+for i in lbls:
+    labels.append(i.text)
+print (labels)
+
+votos = soup.find_all('td')
+for j in votos.find_all('div', {'class':'answer-votes'}):
+    tbl.append(i.text)
+print(tbl)
+
+
+#unique_string=(" ").join(labels)'''
+
+text = "####################////////////////..............holaholanenuca"
+#text = unidecode.unidecode(text)
+
+stop_words = set(STOPWORDS)
+creation = np.asarray(Image.open('gato.png'))
+#creation = np.asarray(Image.open('nubeProyecto.png'))
+
+wordcloud = WordCloud(background_color="white", mask=creation, stopwords = stop_words).generate_words_frequencies(text)
+#wordcloud = WordCloud(background_color="black", mask=creation, contour_width=3, contour_color='black').generate(unique_string)
+colors = ImageColorGenerator(creation)
+wordcloud.recolor(color_func= colors)
+
+plt.figure(figsize=(8,4))
+plt.imshow(wordcloud)
+plt.axis("off")
+#plt.savefig("your_file_name"+".png", bbox_inches='tight')
+plt.show()
+
+dic = dict (zip (tuple (labels), tuple (numbers)))
+response = requests.get (url)
+creation = np.asarray (Image.open (BytesIO (response.content)))  #np transforma la imagen en un array
+wordcloud = WordCloud (background_color = clr, mask=creation, contour_width = cw, max_words=1000).generate_from_frequencies (dic)
+colors = ImageColorGenerator (creation)
+wordcloud.recolor (color_func = colors)
+plt.figure (figsize = (15, 8))
+plt.imshow (wordcloud)
+plt.axis ("off")
+plt.show ()
+plt.close ()
