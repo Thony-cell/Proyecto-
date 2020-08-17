@@ -1,0 +1,57 @@
+from bs4 import BeautifulSoup
+import requests
+import pandas as pan
+from os import path
+from matplotlib.pyplot import imread
+import matplotlib.pyplot as plt
+from PIL import Image
+import sys, os, webbrowser, platform
+
+import time
+from time import sleep
+from sys import stdout
+
+import numpy as np
+from wordcloud import WordCloud, ImageColorGenerator
+from PIL import Image
+import requests
+from io import BytesIO
+ 
+from sys import stdout
+
+
+RED, WHITE, CYAN, GREEN, END = '\033[91m', '\33[46m', '\033[36m', '\033[1;32m', '\033[0m'
+
+
+for i in range(101):
+        time.sleep(0.01)
+        stdout.write("\r{0}[{3}*{0}]{2} Iniciando Programa Por Favor Espere... %d%%".format(GREEN, END, CYAN, RED, WHITE) % i)
+        stdout.flush()
+        time.sleep(0.02)
+
+id = input("\n\n[*] Digite el ID del usuario para mostrar la nube de palabras: \n    ")
+print("\n")
+for i in range(101):
+        time.sleep(0.01)
+        stdout.write("\r{0}[{3}*{0}]{2} Abriendo Base De Datos De StackOverFlow... %d%%".format(GREEN, END, CYAN, RED, WHITE) % i)
+        stdout.flush()
+        time.sleep(0.02)
+
+for i in range(101):
+        time.sleep(0.01)
+        stdout.write("\r{0}[{3}*{0}]{2} Cargando Usuarios De StackOverFlow... %d%%".format(GREEN, END, CYAN, RED, WHITE) % i)
+        stdout.flush()
+        time.sleep(0.02)
+
+print (f"\n\n[*] Buscando Usuario << {id} >> En StackOverFlow Data Base Por Favor Espere")
+for i in range(101):
+        time.sleep(0.01)
+        stdout.write("\r{0}[{3}*{0}]{2} %d%%".format(GREEN, END, CYAN, RED, WHITE) % i)
+        stdout.flush()
+        time.sleep(0.02)
+
+if id.isdigit () != True:
+  print ("\n\nDato no valido.")
+else:
+  url = 'https://es.stackoverflow.com/users/' + id + "/?tab=tags"
+  page = requests.get (url)   # requests chequea que el url funciona
